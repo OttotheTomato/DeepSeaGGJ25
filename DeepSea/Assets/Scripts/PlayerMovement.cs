@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private GameObject Head;
     InputAction MoveAction;
     InputAction TurnAction;
+    InputAction Escape;
 
     [SerializeField]
     private float MoveSpeed = 10f;
@@ -34,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
         CharController = GetComponent<CharacterController>();
         MoveAction = InputComponent.actions["Walk"];
         TurnAction = InputComponent.actions["Look"];
+        Escape = InputComponent.actions["Escape"];
         Focus();
     }
 
@@ -46,16 +48,23 @@ public class PlayerMovement : MonoBehaviour
 
         CharController.Move(transform.TransformDirection(currentInputVector.x, 0, currentInputVector.y) * MoveSpeed * Time.deltaTime);
 
-        //turning stuff
-        Vector2 turnValue = TurnAction.ReadValue<Vector2>();
-        float mouseXRoation = turnValue.x * MouseSensitivity;
-        transform.Rotate(0, mouseXRoation, 0);
+        if (Focused)
+        {
+            //turning stuff
+            Vector2 turnValue = TurnAction.ReadValue<Vector2>();
+            float mouseXRoation = turnValue.x * MouseSensitivity;
+            transform.Rotate(0, mouseXRoation, 0);
 
-        MouseYRotation -= turnValue.y * MouseSensitivity;
-        MouseYRotation = Mathf.Clamp(MouseYRotation, -90, 90);
-        Head.transform.localRotation = Quaternion.Euler(MouseYRotation, 0, 0);
+            MouseYRotation -= turnValue.y * MouseSensitivity;
+            MouseYRotation = Mathf.Clamp(MouseYRotation, -90, 90);
+            Head.transform.localRotation = Quaternion.Euler(MouseYRotation, 0, 0);
+        }
+        Debug.Log(Focused);
 
-
+        if (Escape.WasPressedThisFrame())
+        {
+            Focus();
+        }
     }
 
     void Focus()
@@ -63,10 +72,12 @@ public class PlayerMovement : MonoBehaviour
         if (!Focused)
         {
             Cursor.lockState = CursorLockMode.Locked;
+            Focused = true;
         }
         else
         {
             Cursor.lockState = CursorLockMode.None;
+            Focused = false;
         }
     }
 }
