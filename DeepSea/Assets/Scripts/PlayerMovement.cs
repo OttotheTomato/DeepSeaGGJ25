@@ -27,10 +27,20 @@ public class PlayerMovement : MonoBehaviour
 
     private bool Focused = false;
 
+    Vector3 StartPos;
+
+    [SerializeField]
+    float BobAmplitude = 10;
+    [SerializeField]
+    float BobPeriod = 5f;
+    [SerializeField]
+    float ReturnSpeed = 3f;
+
     // Start is called before the first frame update
     void Start()
     {
         Head = transform.GetChild(0).gameObject;
+        StartPos = Head.transform.localPosition;
         InputComponent = GetComponent<PlayerInput>();
         CharController = GetComponent<CharacterController>();
         MoveAction = InputComponent.actions["Walk"];
@@ -42,11 +52,28 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         //walking stuff
         Vector2 moveValue = MoveAction.ReadValue<Vector2>();
-        currentInputVector = Vector2.SmoothDamp(currentInputVector, moveValue, ref smoothInputVelocity, smoothInputSpeed);
+        if (moveValue.magnitude > 0)
+        {
+            float theta = Time.timeSinceLevelLoad / BobPeriod;
+            float distance = BobAmplitude * Mathf.Sin(theta);
 
+            Vector3 targetPos = StartPos + Vector3.up * distance;
+
+            Head.transform.localPosition = Vector3.Lerp(Head.transform.localPosition, targetPos, ReturnSpeed * Time.deltaTime);
+        }
+        else
+        {
+            if (Head.transform.localPosition != StartPos)
+            {
+                Head.transform.localPosition = new Vector3(StartPos.x, Mathf.Lerp(Head.transform.localPosition.y, StartPos.y, ReturnSpeed * Time.deltaTime), StartPos.z);
+            }
+        }
+        currentInputVector = Vector2.SmoothDamp(currentInputVector, moveValue, ref smoothInputVelocity, smoothInputSpeed);
         CharController.Move(transform.TransformDirection(currentInputVector.x, 0, currentInputVector.y) * MoveSpeed * Time.deltaTime);
+
 
         if (Focused)
         {
