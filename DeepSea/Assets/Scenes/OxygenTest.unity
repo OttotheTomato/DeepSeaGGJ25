@@ -696,6 +696,22 @@ PrefabInstance:
       propertyPath: m_text
       value: 'O2: 50%'
       objectReference: {fileID: 0}
+    - target: {fileID: 8472265573062584192, guid: aee9ec8c5f23e424baf8768dac5ca938, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 9be8e28f00c3de44f94d7e63034f09b1, type: 2}
+    - target: {fileID: 8472265573062584192, guid: aee9ec8c5f23e424baf8768dac5ca938, type: 3}
+      propertyPath: m_fontStyle
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8472265573062584192, guid: aee9ec8c5f23e424baf8768dac5ca938, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1978807765228441476, guid: 9be8e28f00c3de44f94d7e63034f09b1, type: 2}
+    - target: {fileID: 8472265573062584192, guid: aee9ec8c5f23e424baf8768dac5ca938, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
