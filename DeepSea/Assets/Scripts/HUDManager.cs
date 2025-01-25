@@ -35,7 +35,14 @@ namespace game
         }
 
         public void UpdateOxygen(float oxygen) {
-            OxygenLevelText.text = oxygen.ToString("F2") + "%";
+            OxygenLevelText.text = "O2: " + oxygen.ToString("F2") + "%";
+            if(oxygen >= 60){
+                OxygenLevelText.color = new Color32(143, 166, 76, 255);
+            }else if (oxygen >= 20){
+                OxygenLevelText.color = new Color32(181, 100, 38, 255);
+            }else{
+                OxygenLevelText.color = new Color32(122, 46, 40, 255);
+            }
         }
     }
 }
