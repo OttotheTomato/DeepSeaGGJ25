@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
         Head.transform.localPosition = Vector3.Lerp(Head.transform.localPosition, TargetPos, ReturnSpeed * Time.deltaTime);
 
         currentInputVector = Vector2.SmoothDamp(currentInputVector, moveValue, ref smoothInputVelocity, smoothInputSpeed);
-        CharController.Move(transform.TransformDirection(currentInputVector.x, 0, currentInputVector.y) * MoveSpeed * Time.deltaTime);
+        CharController.SimpleMove(transform.TransformDirection(currentInputVector.x, 0, currentInputVector.y) * MoveSpeed);
 
 
         if (Focused)
