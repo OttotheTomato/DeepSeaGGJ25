@@ -29,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 StartPos;
 
+    Vector3 TargetPos;
+
     [SerializeField]
     float BobAmplitude = 10;
     [SerializeField]
@@ -41,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Head = transform.GetChild(0).gameObject;
         StartPos = Head.transform.localPosition;
+        TargetPos = StartPos;
         InputComponent = GetComponent<PlayerInput>();
         CharController = GetComponent<CharacterController>();
         MoveAction = InputComponent.actions["Walk"];
@@ -60,17 +63,20 @@ public class PlayerMovement : MonoBehaviour
             float theta = Time.timeSinceLevelLoad / BobPeriod;
             float distance = BobAmplitude * Mathf.Sin(theta);
 
-            Vector3 targetPos = StartPos + Vector3.up * distance;
+            TargetPos = StartPos + Vector3.up * distance;
 
-            Head.transform.localPosition = Vector3.Lerp(Head.transform.localPosition, targetPos, ReturnSpeed * Time.deltaTime);
+
         }
         else
         {
             if (Head.transform.localPosition != StartPos)
             {
-                Head.transform.localPosition = new Vector3(StartPos.x, Mathf.Lerp(Head.transform.localPosition.y, StartPos.y, ReturnSpeed * Time.deltaTime), StartPos.z);
+                TargetPos = new Vector3(StartPos.x, Mathf.Lerp(Head.transform.localPosition.y, StartPos.y, ReturnSpeed * Time.deltaTime), StartPos.z);
             }
         }
+
+        Head.transform.localPosition = Vector3.Lerp(Head.transform.localPosition, TargetPos, ReturnSpeed * Time.deltaTime);
+
         currentInputVector = Vector2.SmoothDamp(currentInputVector, moveValue, ref smoothInputVelocity, smoothInputSpeed);
         CharController.Move(transform.TransformDirection(currentInputVector.x, 0, currentInputVector.y) * MoveSpeed * Time.deltaTime);
 
