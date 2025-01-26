@@ -1,13 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TitleManager : MonoBehaviour
 {
+
+    [SerializeField] 
+    private GameObject creditsPanel;
+
+    private bool isLerping;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        isLerping = false;
     }
 
     // Update is called once per frame
@@ -27,6 +34,30 @@ public class TitleManager : MonoBehaviour
     }
     public void ShowCredits()
     {
-        
+        creditsPanel.SetActive(true);
+        if(!isLerping){
+            isLerping = true;
+            Vector2 startPosition = creditsPanel.GetComponent<RectTransform>().anchoredPosition;
+            Vector2 targetPosition = -startPosition;
+            StartCoroutine(LerpPosition(creditsPanel.GetComponent<RectTransform>(), targetPosition, 5f, () => {
+                creditsPanel.GetComponent<RectTransform>().anchoredPosition = startPosition;
+                isLerping = false;
+                }));
+        }
+    }
+
+    private IEnumerator LerpPosition(RectTransform rectTransform, Vector2 targetPosition, float duration, System.Action onComplete)
+    {
+        float elapsedTime = 0;
+        Vector2 startPosition = rectTransform.anchoredPosition;
+        while (elapsedTime < duration)
+        {
+            rectTransform.anchoredPosition = Vector2.Lerp(startPosition, targetPosition, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        rectTransform.anchoredPosition = targetPosition;
+        onComplete?.Invoke();
+
     }
 }
