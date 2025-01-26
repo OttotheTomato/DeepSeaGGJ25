@@ -56,8 +56,8 @@ public class AnnoyingFish : MonoBehaviour
             _RB.AddForce(_Direction * _Speed * 2f);
             if (!FlashScreech)
             {
-                AudioManager.Instance.PlayerSounds(_AudioSource, "fishhurt");
                 FlashScreech = true;
+                AudioManager.Instance.PlayerSounds(_AudioSource, "fishhurt");
             }
         }
         else if (CanSeeTarget(_PlayerTransform) && _SeesPlayer)
@@ -83,14 +83,19 @@ public class AnnoyingFish : MonoBehaviour
         }
         else if (_Patrolling)
         {
+            FlashScreech = false;
             if (Vector3.Distance(transform.position, _TargetPosition) < _ClearingRange)
             {
                 int _RandomInt = Random.Range(0, _PatrolPoints.Length);
 
-                if (CanSeeTarget(_PatrolPoints[_RandomInt].transform))
+                if (_PatrolPoints.Length > 0)
                 {
-                    _TargetPosition = _PatrolPoints[_RandomInt].transform.position;
+                    if (CanSeeTarget(_PatrolPoints[_RandomInt].transform))
+                    {
+                        _TargetPosition = _PatrolPoints[_RandomInt].transform.position;
+                    }
                 }
+                FlashScreech = false;
             }
             else
             {
@@ -103,7 +108,6 @@ public class AnnoyingFish : MonoBehaviour
         }
         else
         {
-            FlashScreech = false;
             Vector3 _Direction = (_TargetPosition - transform.position).normalized;
 
             transform.forward = Vector3.Lerp(transform.forward, _Direction, _TurningSpeed * Time.deltaTime);

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Elevator : MonoBehaviour
 {
     [SerializeField]
-    private float WinTimer = 10;
+    private float WinTimer = 5;
 
     private float WinTimerReal = 0;
 
