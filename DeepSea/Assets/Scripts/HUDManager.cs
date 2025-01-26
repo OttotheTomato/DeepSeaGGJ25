@@ -59,9 +59,11 @@ namespace game
             UpdateFog(oxygen);
         }
 
-        public void UpdateFog(float oxygen) {
-            float fogLevel = 100 - (((oxygen / 100f) * 100) * 0.5f);
-            FogImage.color = new Color(1, 1, 1, fogLevel / 100f);
-        }
+       public void UpdateFog(float oxygen) {
+        float fogLevel = (100 - (oxygen / 100f) * 100) * 0.5f;
+        float breatheAmount = Mathf.Sin(Time.time * 1f) * 20f;
+        fogLevel += breatheAmount;
+        FogImage.color = new Color(1, 1, 1, fogLevel / 100f);
+}
     }
 }
