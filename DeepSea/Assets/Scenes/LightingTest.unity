@@ -522,10 +522,6 @@ PrefabInstance:
       value: Sea_Plant_B
       objectReference: {fileID: 0}
     - target: {fileID: 3444039451848058350, guid: 2e250722fa0a2e245b09579334e6388a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3444039451848058350, guid: 2e250722fa0a2e245b09579334e6388a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 104.23
       objectReference: {fileID: 0}
@@ -639,18 +635,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 228313108168280258, guid: 4c523bed5c869c549ad023d11ba31493, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 228313108168280258, guid: 4c523bed5c869c549ad023d11ba31493, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 228313108168280258, guid: 4c523bed5c869c549ad023d11ba31493, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 228313108168280258, guid: 4c523bed5c869c549ad023d11ba31493, type: 3}
       propertyPath: m_LocalPosition.x
       value: 99.97
@@ -782,18 +766,6 @@ PrefabInstance:
       value: Sea_Plant_E
       objectReference: {fileID: 0}
     - target: {fileID: 6638960056673519223, guid: 1bffc868c3ad7494690efb98c23c5db0, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6638960056673519223, guid: 1bffc868c3ad7494690efb98c23c5db0, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6638960056673519223, guid: 1bffc868c3ad7494690efb98c23c5db0, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6638960056673519223, guid: 1bffc868c3ad7494690efb98c23c5db0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 109.27
       objectReference: {fileID: 0}
@@ -833,10 +805,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6638960056673519223, guid: 1bffc868c3ad7494690efb98c23c5db0, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -854,18 +822,6 @@ PrefabInstance:
       propertyPath: CameraTransform
       value: 
       objectReference: {fileID: 1527851233}
-    - target: {fileID: 5999883873900256540, guid: 635fe9446c425ff4abba753d23690281, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.27
-      objectReference: {fileID: 0}
-    - target: {fileID: 5999883873900256540, guid: 635fe9446c425ff4abba753d23690281, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.27
-      objectReference: {fileID: 0}
-    - target: {fileID: 5999883873900256540, guid: 635fe9446c425ff4abba753d23690281, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.27
-      objectReference: {fileID: 0}
     - target: {fileID: 5999883873900256540, guid: 635fe9446c425ff4abba753d23690281, type: 3}
       propertyPath: m_LocalPosition.x
       value: 110.82
@@ -906,10 +862,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5999883873900256540, guid: 635fe9446c425ff4abba753d23690281, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6157168220884506776, guid: 635fe9446c425ff4abba753d23690281, type: 3}
       propertyPath: m_Name
       value: Sea_Plant_F
@@ -934,10 +886,6 @@ PrefabInstance:
     - target: {fileID: 7407677398863199108, guid: 638b9cf18c34e9444a124baebfe31662, type: 3}
       propertyPath: m_Name
       value: Sea_Plant_C
-      objectReference: {fileID: 0}
-    - target: {fileID: 8134017396802471528, guid: 638b9cf18c34e9444a124baebfe31662, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8134017396802471528, guid: 638b9cf18c34e9444a124baebfe31662, type: 3}
       propertyPath: m_LocalPosition.x
