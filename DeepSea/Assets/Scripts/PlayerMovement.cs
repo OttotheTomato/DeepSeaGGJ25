@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     private GameObject Head;
+
+    private AudioSource AS;
     InputAction MoveAction;
     InputAction TurnAction;
     InputAction Escape;
@@ -16,6 +18,10 @@ public class PlayerMovement : MonoBehaviour
     private float smoothInputSpeed = .2f;
     [SerializeField]
     private float MouseSensitivity = 0.2f;
+
+    [SerializeField]
+    private float StepTimer = 1f;
+    private float StepTimerReal = 0f;
 
     private PlayerInput InputComponent;
 
@@ -43,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Head = transform.GetChild(0).gameObject;
         StartPos = Head.transform.localPosition;
+        AS = GetComponent<AudioSource>();
         TargetPos = StartPos;
         InputComponent = GetComponent<PlayerInput>();
         CharController = GetComponent<CharacterController>();
@@ -65,6 +72,17 @@ public class PlayerMovement : MonoBehaviour
 
             TargetPos = StartPos + Vector3.up * distance;
 
+            Debug.Log(StepTimerReal + " " + AS.isPlaying);
+
+            if (StepTimerReal > StepTimer & !AS.isPlaying)
+            {
+                AudioManager.Instance.Footstep(AS);
+                StepTimerReal = 0;
+            }
+            else
+            {
+                StepTimerReal += Time.deltaTime;
+            }
 
         }
         else
@@ -73,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 TargetPos = new Vector3(StartPos.x, Mathf.Lerp(Head.transform.localPosition.y, StartPos.y, ReturnSpeed * Time.deltaTime), StartPos.z);
             }
+            StepTimerReal = 0;
         }
 
         Head.transform.localPosition = Vector3.Lerp(Head.transform.localPosition, TargetPos, ReturnSpeed * Time.deltaTime);
@@ -98,6 +117,12 @@ public class PlayerMovement : MonoBehaviour
         {
             Focus();
         }
+
+        if (MoveAction.WasPressedThisFrame() & !AS.isPlaying)
+        {
+
+        }
+
     }
 
     void Focus()
