@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace game {
+namespace game
+{
     public class PlayerOxygenController : MonoBehaviour
     {
         [SerializeField]
@@ -16,11 +17,15 @@ namespace game {
         [SerializeField]
         private float CurrentOxygenLevel;
 
+        private bool Gasped = false;
+        private AudioSource AS;
+
         private bool isInBubble;
 
         // Start is called before the first frame update
         void Start()
         {
+            AS = GetComponent<AudioSource>();
             isInBubble = false;
             CurrentOxygenLevel = StartingOxygenLevel;
         }
@@ -28,33 +33,49 @@ namespace game {
         // Update is called once per frame
         void Update()
         {
-            if (!isInBubble){
+            if (!isInBubble)
+            {
+                Gasped = false;
                 CurrentOxygenLevel -= OxygenDrainRate * Time.deltaTime;
             }
             UpdateOxygenText();
         }
 
-        public void RemoveOxygen(float oxygenToRemove) {
+        public void RemoveOxygen(float oxygenToRemove)
+        {
             CurrentOxygenLevel -= oxygenToRemove;
         }
 
-        private void UpdateOxygenText() {
-           HUDManager.Instance.UpdateOxygen(CurrentOxygenLevel);
+        private void UpdateOxygenText()
+        {
+            HUDManager.Instance.UpdateOxygen(CurrentOxygenLevel);
         }
 
-        private void OnTriggerStay(Collider other) {
-            if (other.gameObject.CompareTag("Bubble")){
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.gameObject.CompareTag("Bubble"))
+            {
                 isInBubble = true;
                 other.gameObject.GetComponent<BubbleController>().Deflate();
-                if (CurrentOxygenLevel < MaxOxygenLevel){
+                if (CurrentOxygenLevel < MaxOxygenLevel)
+                {
                     CurrentOxygenLevel += OxygenRechargeRate * Time.deltaTime;
-                }else{
+                }
+                else
+                {
                     CurrentOxygenLevel = MaxOxygenLevel;
+                }
+
+                if (!Gasped)
+                {
+                    AudioManager.Instance.Gasp(AS);
+                    Gasped = true;
                 }
             }
         }
 
-        private void OnTriggerExit(Collider other) {
+        private void OnTriggerExit(Collider other)
+        {
             isInBubble = false;
         }
     }
