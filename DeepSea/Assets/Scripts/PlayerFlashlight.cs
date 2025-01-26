@@ -7,6 +7,8 @@ public class PlayerFlashlight : MonoBehaviour
     [SerializeField]
     private Camera m_Camera;
 
+    public float _Range = 10f;
+
     private AnnoyingFish currentFish;
     void Update()
     {
@@ -14,7 +16,7 @@ public class PlayerFlashlight : MonoBehaviour
 
         if (Physics.Raycast(m_Camera.transform.position, m_Camera.transform.forward, out hit))
         {
-            if (hit.collider.gameObject.CompareTag("Fish") && hit.distance < 10f && CanSeeTarget(hit.transform))
+            if (hit.collider.gameObject.CompareTag("Fish") && hit.distance < _Range && CanSeeTarget(hit.transform))
             {
                 currentFish = hit.collider.gameObject.GetComponent<AnnoyingFish>();
                 currentFish._Flashed = true;
