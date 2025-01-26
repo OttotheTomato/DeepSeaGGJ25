@@ -2123,7 +2123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c014be5e2444d624e96afa9788487738, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Speed: 1
+  _Speed: 0.5
   _ClearingRange: 0.5
   _TurningSpeed: 2
   _Offset: {x: 0, y: 0.5, z: 0}

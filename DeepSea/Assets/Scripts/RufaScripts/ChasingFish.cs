@@ -1,3 +1,4 @@
+using game;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -84,11 +85,14 @@ public class AnnoyingFish : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision _Collision)
     {
-        if (collision.transform == _PlayerTransform)
+        if (_Collision.transform == _PlayerTransform)
         {
-            Debug.Log("Collided with Player");
+            //Debug.Log("Collided with Player");
+
+            PlayerOxygenController _OxygenControl = _Collision.gameObject.GetComponent<PlayerOxygenController>();
+            _OxygenControl.RemoveOxygen(8f);
         }
     }
     
