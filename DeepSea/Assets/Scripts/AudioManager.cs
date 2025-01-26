@@ -67,8 +67,6 @@ public class AudioManager : MonoBehaviour
 
         int randomInt = Random.Range(0, StepAudio.Length);
         playerSource.PlayOneShot(StepAudio[randomInt], 0.5f);
-
-        //PlayerSounds(playerSource, "SnowStep");
     }
 
 }
