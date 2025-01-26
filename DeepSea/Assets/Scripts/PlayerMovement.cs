@@ -92,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
             MouseYRotation = Mathf.Clamp(MouseYRotation, -90, 90);
             Head.transform.localRotation = Quaternion.Euler(MouseYRotation, 0, 0);
         }
-        Debug.Log(Focused);
+        // Debug.Log(Focused);
 
         if (Escape.WasPressedThisFrame())
         {

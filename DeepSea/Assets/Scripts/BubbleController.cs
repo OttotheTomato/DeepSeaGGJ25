@@ -29,7 +29,7 @@ namespace game {
             CheckBubblePop();
         }
 
-        public void CheckBubblePop() {
+        private void CheckBubblePop() {
             if (gameObject.transform.localScale.x <= MinimumSize) {
                 Destroy(gameObject);
                 // AudioManager.instance.Play("BubblePop");

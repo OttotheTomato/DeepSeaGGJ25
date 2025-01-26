@@ -12,11 +12,12 @@ GameObject:
   - component: {fileID: 3244434552172934637}
   - component: {fileID: 3674092056932145705}
   - component: {fileID: 7852578267346963515}
+  - component: {fileID: 7380844938996224290}
   - component: {fileID: 142126256482728471}
   - component: {fileID: 7278027865311292807}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,6 +106,23 @@ MonoBehaviour:
   BobAmplitude: 0.25
   BobPeriod: 0.6
   ReturnSpeed: 1
+--- !u!114 &7380844938996224290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722469260677327301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75bc143f32c155143ad1c4a07acf575d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxOxygenLevel: 100
+  OxygenRechargeRate: 0.5
+  OxygenDrainRate: 0.1
+  StartingOxygenLevel: 10
+  CurrentOxygenLevel: 10
 --- !u!114 &142126256482728471
 MonoBehaviour:
   m_ObjectHideFlags: 0
