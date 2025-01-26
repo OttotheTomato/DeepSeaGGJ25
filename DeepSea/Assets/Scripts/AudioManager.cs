@@ -63,10 +63,8 @@ public class AudioManager : MonoBehaviour
 
     public void Footstep(AudioSource playerSource)
     {
-        PlayerSounds(playerSource, "WalkSound");
-
         int randomInt = Random.Range(0, StepAudio.Length);
-        playerSource.PlayOneShot(StepAudio[randomInt], 0.5f);
+        playerSource.PlayOneShot(StepAudio[randomInt]);
     }
 
 }

@@ -72,8 +72,6 @@ public class PlayerMovement : MonoBehaviour
 
             TargetPos = StartPos + Vector3.up * distance;
 
-            Debug.Log(StepTimerReal + " " + AS.isPlaying);
-
             if (StepTimerReal > StepTimer & !AS.isPlaying)
             {
                 AudioManager.Instance.Footstep(AS);
@@ -111,7 +109,6 @@ public class PlayerMovement : MonoBehaviour
             MouseYRotation = Mathf.Clamp(MouseYRotation, -90, 90);
             Head.transform.localRotation = Quaternion.Euler(MouseYRotation, 0, 0);
         }
-        // Debug.Log(Focused);
 
         if (Escape.WasPressedThisFrame())
         {
