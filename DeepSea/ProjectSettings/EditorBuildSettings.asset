@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScene.unity
     guid: d23abf6b7657c104c8676e935c873593
   - enabled: 1
-    path: Assets/Scenes/LightingTest.unity
-    guid: 6d45301ecc0327f4a83a62d0bbe26bb9
-  - enabled: 1
     path: Assets/Scenes/MainLevel.unity
     guid: 2ea8072a3435d2f428ec146521cb4b8e
   m_configObjects:
