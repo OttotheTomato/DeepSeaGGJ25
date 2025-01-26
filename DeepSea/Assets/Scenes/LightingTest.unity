@@ -218,6 +218,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6576654529087142268, guid: aee9ec8c5f23e424baf8768dac5ca938, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6576654529087142268, guid: aee9ec8c5f23e424baf8768dac5ca938, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7599578291325740595, guid: aee9ec8c5f23e424baf8768dac5ca938, type: 3}
       propertyPath: m_Name
       value: HUD
@@ -392,6 +400,10 @@ PrefabInstance:
     - target: {fileID: 6115510985408695978, guid: bdc59a0ddab2e814fa7b81c8a9532952, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7380844938996224290, guid: bdc59a0ddab2e814fa7b81c8a9532952, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
