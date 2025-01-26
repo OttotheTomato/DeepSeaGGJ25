@@ -57,9 +57,15 @@ namespace game
             HUDManager.Instance.UpdateOxygen(CurrentOxygenLevel);
         }
 
+        private void OnTriggerEnter(Collider other){
+            if (other.gameObject.CompareTag("Bubble")){
+                isInBubble = true;
+            }
+        }
+
         private void OnTriggerStay(Collider other)
         {
-            if (other.gameObject.CompareTag("Bubble"))
+            if (other.gameObject.CompareTag("Bubble") && other.gameObject.activeSelf)
             {
                 isInBubble = true;
                 other.gameObject.GetComponent<BubbleController>().Deflate();
@@ -78,9 +84,19 @@ namespace game
                     Gasped = true;
                 }
             }
+            else{
+                isInBubble = false;
+            }
         }
 
         private void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject.CompareTag("Bubble")){
+                isInBubble = false;
+            }
+        }
+
+        public void OnBubbleDestroyed()
         {
             isInBubble = false;
         }

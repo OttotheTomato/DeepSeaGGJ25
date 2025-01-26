@@ -12,10 +12,12 @@ namespace game {
         [SerializeField] 
         private float DeflationSpeed = .01f;
 
+        private PlayerOxygenController playerController;
+
         // Start is called before the first frame update
         void Start()
         {
-            
+            playerController = FindObjectOfType<PlayerOxygenController>();
         }
 
         // Update is called once per frame
@@ -31,6 +33,10 @@ namespace game {
 
         private void CheckBubblePop() {
             if (gameObject.transform.localScale.x <= MinimumSize) {
+                if (playerController != null)
+                {
+                    playerController.OnBubbleDestroyed();
+                }
                 Destroy(gameObject);
                 // AudioManager.instance.Play("BubblePop");
             }
