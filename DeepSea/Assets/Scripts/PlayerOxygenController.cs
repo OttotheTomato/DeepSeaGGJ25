@@ -86,7 +86,23 @@ namespace game
 
         private void PlayerDie(){
             // AudioManager.Instance.Play("PlayerDie");
+            RagdollPlayer();
             HUDManager.Instance.GameOver();
+        }
+
+        public void RagdollPlayer(){
+            float deathForce = 10f;
+            float deathTorque = 10f;
+
+            Rigidbody rb = gameObject.GetComponent<Rigidbody>();
+
+            rb.freezeRotation = false;
+
+            rb.AddForce(Vector3.down * deathForce, ForceMode.Impulse);
+            rb.AddTorque(Vector3.right * deathTorque, ForceMode.Impulse);
+
+            GetComponent<Collider>().enabled = false;
+            
         }
     }
 }
