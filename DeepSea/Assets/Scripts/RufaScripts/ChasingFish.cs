@@ -17,12 +17,23 @@ public class AnnoyingFish : MonoBehaviour
     private bool _SeesPlayer = false, _Patrolling = true;
     public bool _Flashed = false;
 
+    [SerializeField]
+    private float ScreechDistance = 5f;
+
+    private AudioSource _AudioSource;
+
+    private bool AttackScreech = false;
+
+    private bool FlashScreech = false;
+
+
     private PatrolPoint[] _PatrolPoints;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        _AudioSource = transform.GetChild(0).gameObject.GetComponent<AudioSource>();
         _RB = GetComponent<Rigidbody>();
         _PlayerTransform = FindObjectOfType<PlayerMovement>().transform;
 
@@ -43,6 +54,11 @@ public class AnnoyingFish : MonoBehaviour
 
             transform.forward = Vector3.Lerp(transform.forward, _Direction, _TurningSpeed * Time.deltaTime);
             _RB.AddForce(_Direction * _Speed * 2f);
+            if (!FlashScreech)
+            {
+                AudioManager.Instance.PlayerSounds(_AudioSource, "fishhurt");
+                FlashScreech = true;
+            }
         }
         else if (CanSeeTarget(_PlayerTransform) && _SeesPlayer)
         {
@@ -50,7 +66,20 @@ public class AnnoyingFish : MonoBehaviour
             Vector3 _Direction = (_TargetPosition + _Offset - transform.position).normalized;
 
             transform.forward = Vector3.Lerp(transform.forward, _Direction, _TurningSpeed * Time.deltaTime);
-            _RB.AddForce(_Direction * _Speed);            
+            _RB.AddForce(_Direction * _Speed);
+
+            if (Vector3.Distance(transform.position, _TargetPosition) < ScreechDistance)
+            {
+                if (!AttackScreech & !_AudioSource.isPlaying)
+                {
+                    AudioManager.Instance.PlayerSounds(_AudioSource, "fishscreech");
+                    AttackScreech = true;
+                }
+            }
+            else
+            {
+                AttackScreech = false;
+            }
         }
         else if (_Patrolling)
         {
@@ -74,6 +103,7 @@ public class AnnoyingFish : MonoBehaviour
         }
         else
         {
+            FlashScreech = false;
             Vector3 _Direction = (_TargetPosition - transform.position).normalized;
 
             transform.forward = Vector3.Lerp(transform.forward, _Direction, _TurningSpeed * Time.deltaTime);
@@ -83,6 +113,8 @@ public class AnnoyingFish : MonoBehaviour
             if (Vector3.Distance(transform.position, _TargetPosition) < _ClearingRange)
                 _Patrolling = true;
         }
+
+
     }
 
     private void OnCollisionEnter(Collision _Collision)
@@ -95,7 +127,7 @@ public class AnnoyingFish : MonoBehaviour
             _OxygenControl.RemoveOxygen(8f);
         }
     }
-    
+
     private void OnTriggerEnter(Collider _Entity)
     {
         if (_Entity.transform == _PlayerTransform)
@@ -115,11 +147,11 @@ public class AnnoyingFish : MonoBehaviour
             _SeesPlayer = false;
         }
     }
-    
+
     private bool CanSeeTarget(Transform _Target)
     {
         RaycastHit[] _Objects = Physics.RaycastAll(transform.position, _Target.position + _Offset - transform.position, Vector3.Distance(transform.position, _Target.position));
-        
+
         for (int i = 0; i < _Objects.Length; i++)
         {
             if (_Objects[i].collider.gameObject.CompareTag("Obstruction"))
