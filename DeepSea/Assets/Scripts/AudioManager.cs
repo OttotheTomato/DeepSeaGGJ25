@@ -14,6 +14,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private AudioClip[] StepAudio = { };
 
+    [SerializeField]
+    private AudioClip[] GaspAudio = { };
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -24,18 +27,6 @@ public class AudioManager : MonoBehaviour
         {
             _instance = this;
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void SpawnSoundAtLocation(string audio, Transform location)
@@ -59,6 +50,12 @@ public class AudioManager : MonoBehaviour
             }
         }
 
+    }
+
+    public void Gasp(AudioSource playerSource)
+    {
+        int randomInt = Random.Range(0, GaspAudio.Length);
+        playerSource.PlayOneShot(GaspAudio[randomInt]);
     }
 
     public void Footstep(AudioSource playerSource)
