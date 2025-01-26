@@ -84,11 +84,14 @@ public class AnnoyingFish : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision _Collision)
     {
-        if (collision.transform == _PlayerTransform)
+        if (_Collision.transform == _PlayerTransform)
         {
-            Debug.Log("Collided with Player");
+            //Debug.Log("Collided with Player");
+
+            PlayerControls _PlayerControlls = _Collision.gameObject.GetComponent<PlayerControls>();
+            //_PlayerControlls.;
         }
     }
     
