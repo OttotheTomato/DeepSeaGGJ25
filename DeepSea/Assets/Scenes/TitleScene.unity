@@ -2563,6 +2563,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1868173850002371627, guid: 47eef28cd4b09a246a117c39edf94db6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1868173850002371627, guid: 47eef28cd4b09a246a117c39edf94db6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3967313848746201413, guid: 47eef28cd4b09a246a117c39edf94db6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2690,6 +2698,30 @@ PrefabInstance:
     - target: {fileID: 5264237808894388490, guid: 47eef28cd4b09a246a117c39edf94db6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263902037881638668, guid: 47eef28cd4b09a246a117c39edf94db6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263902037881638668, guid: 47eef28cd4b09a246a117c39edf94db6, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263902037881638668, guid: 47eef28cd4b09a246a117c39edf94db6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 641.9146
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263902037881638668, guid: 47eef28cd4b09a246a117c39edf94db6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263902037881638668, guid: 47eef28cd4b09a246a117c39edf94db6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -320.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263902037881638668, guid: 47eef28cd4b09a246a117c39edf94db6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 6415460635638888627, guid: 47eef28cd4b09a246a117c39edf94db6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
