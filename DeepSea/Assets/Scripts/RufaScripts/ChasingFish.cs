@@ -67,6 +67,19 @@ public class AnnoyingFish : MonoBehaviour
 
             transform.forward = Vector3.Lerp(transform.forward, _Direction, _TurningSpeed * Time.deltaTime);
             _RB.AddForce(_Direction * _Speed);
+
+            if (Vector3.Distance(transform.position, _TargetPosition) < ScreechDistance)
+            {
+                if (!AttackScreech & !_AudioSource.isPlaying)
+                {
+                    AudioManager.Instance.PlayerSounds(_AudioSource, "fishscreech");
+                    AttackScreech = true;
+                }
+            }
+            else
+            {
+                AttackScreech = false;
+            }
         }
         else if (_Patrolling)
         {
@@ -101,18 +114,7 @@ public class AnnoyingFish : MonoBehaviour
                 _Patrolling = true;
         }
 
-        if (Vector3.Distance(transform.position, _TargetPosition) < ScreechDistance)
-        {
-            if (!AttackScreech & !_AudioSource.isPlaying)
-            {
-                AudioManager.Instance.PlayerSounds(_AudioSource, "fishscreech");
-                AttackScreech = true;
-            }
-        }
-        else
-        {
-            AttackScreech = false;
-        }
+
     }
 
     private void OnCollisionEnter(Collision _Collision)

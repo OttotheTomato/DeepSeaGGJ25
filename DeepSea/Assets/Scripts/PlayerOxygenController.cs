@@ -44,6 +44,7 @@ namespace game
         public void RemoveOxygen(float oxygenToRemove)
         {
             CurrentOxygenLevel -= oxygenToRemove;
+            AudioManager.Instance.PlayerSounds(AS, "breathing02");
         }
 
         private void UpdateOxygenText()

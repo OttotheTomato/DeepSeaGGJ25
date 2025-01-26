@@ -14,15 +14,18 @@ public class PlayerFlashlight : MonoBehaviour
 
         if (Physics.Raycast(m_Camera.transform.position, m_Camera.transform.forward, out hit))
         {
-            if (hit.collider.gameObject.CompareTag("Fish"))
+            if (hit.collider.gameObject.CompareTag("Fish") & hit.distance < 20f)
             {
                 currentFish = hit.collider.gameObject.GetComponent<AnnoyingFish>();
                 currentFish._Flashed = true;
             }
             else
             {
-                currentFish._Flashed = false;
-                currentFish = null;
+                if (currentFish != null)
+                {
+                    currentFish._Flashed = false;
+                    currentFish = null;
+                }
             }
         }
     }
