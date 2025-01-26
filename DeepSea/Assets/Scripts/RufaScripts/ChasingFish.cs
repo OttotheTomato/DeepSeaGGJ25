@@ -83,6 +83,7 @@ public class AnnoyingFish : MonoBehaviour
         }
         else if (_Patrolling)
         {
+            FlashScreech = false;
             if (Vector3.Distance(transform.position, _TargetPosition) < _ClearingRange)
             {
                 int _RandomInt = Random.Range(0, _PatrolPoints.Length);
