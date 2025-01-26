@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9523181cc30d60844a2731281efebc44
+guid: 4bedd1b775d491e45978a564c708a10f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,28 +7,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Bars
-    second: {fileID: 2100000, guid: 0a84bf996bde6c5499e1435c6708d617, type: 2}
+      name: Body
+    second: {fileID: 2100000, guid: 493f041ebd3acd242aac4cea346c5214, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: BigBox
-    second: {fileID: 2100000, guid: 81210660967b5b24283420e41b618607, type: 2}
+      name: Eyes
+    second: {fileID: 2100000, guid: a232cb36a2153124292759ab3808e6b5, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Cable
-    second: {fileID: 2100000, guid: 1de1ddd73b610744ca73e101c7bc8768, type: 2}
+      name: Fins
+    second: {fileID: 2100000, guid: f1dbbc254869afb43b98f5c81fcedf7c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Gates
-    second: {fileID: 2100000, guid: 37bacdd8a5e28474a80fca401310b399, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: SmallBox
-    second: {fileID: 2100000, guid: 36cce427a44285d4fa756a961adef85d, type: 2}
+      name: Teeth
+    second: {fileID: 2100000, guid: ed481978e017748408b47567cce448a9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
