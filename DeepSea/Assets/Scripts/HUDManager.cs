@@ -25,6 +25,15 @@ namespace game
         [SerializeField]
         private Image HelmetPanel;
 
+        private bool HUDEmergencyflash;
+        [SerializeField]
+        private Image EmergencyFlashHUD;
+        public float blinkSpeed = 1f;
+        private bool isBlinking = false;
+        public Color startColor = new Color(0f, 0f, 0f, 0f);
+        public Color targetColor = new Color(66f, 14f, 14f, 1f);
+        private Color currentColor;
+
         void Awake() {
             if (_instance != null && _instance != this)
             {
@@ -37,23 +46,60 @@ namespace game
         // Start is called before the first frame update
         void Start()
         {
-        
+            HUDEmergencyflash = false;
+            currentColor = startColor;
+            isBlinking = false;
         }
 
         // Update is called once per frame
         void Update()
         {
-            
+            if(HUDEmergencyflash){
+                EmergencyFlashHUD.enabled = true;
+                isBlinking = true;
+                StartCoroutine(BlinkEmergencyHUD());
+            }
+            else{
+                EmergencyFlashHUD.enabled = false;
+                isBlinking = false;
+                StopCoroutine(BlinkEmergencyHUD());
+            }
+        }
+
+        IEnumerator BlinkEmergencyHUD()
+        {
+            while (isBlinking)
+            {
+                float t = 0f;
+                while (t < 1f)
+                {
+                    t += Time.deltaTime * blinkSpeed;
+                    currentColor = Color.Lerp(startColor, targetColor, t);
+                    EmergencyFlashHUD.GetComponent<CanvasGroup>().alpha = currentColor.a;
+                    yield return null;
+                }
+                t = 0f;
+                while (t < 1f)
+                {
+                    t += Time.deltaTime * blinkSpeed;
+                    currentColor = Color.Lerp(targetColor, startColor, t);
+                    EmergencyFlashHUD.GetComponent<CanvasGroup>().alpha = currentColor.a;
+                    yield return null;
+                }
+            }
         }
 
         public void UpdateOxygen(float oxygen) {
             OxygenLevelText.text = oxygen.ToString("F1") + "%";
             if(oxygen >= 60){
                 OxygenLevelText.color = new Color32(143, 166, 76, 255);
+                HUDEmergencyflash = false;
             }else if (oxygen >= 20){
                 OxygenLevelText.color = new Color32(181, 100, 38, 255);
+                HUDEmergencyflash = false;
             }else{
                 OxygenLevelText.color = new Color32(122, 46, 40, 255);
+                HUDEmergencyflash = true;
             }
             OxygenBarNormal.value = oxygen / 100f;  
             OxygenBarInsane.value = oxygen / 100f;
