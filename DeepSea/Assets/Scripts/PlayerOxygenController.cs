@@ -85,18 +85,21 @@ namespace game
             isInBubble = false;
         }
 
-        private void PlayerDie(){
+        private void PlayerDie()
+        {
             // AudioManager.Instance.Play("PlayerDie");
             RagdollPlayer();
             HUDManager.Instance.GameOver();
         }
 
-        private void PlayerWin(){
+        public void PlayerWin()
+        {
             // AudioManager.Instance.Play("PlayerWin");
             HUDManager.Instance.GameWin();
         }
 
-        public void RagdollPlayer(){
+        public void RagdollPlayer()
+        {
             float deathForce = 10f;
             float deathTorque = 10f;
 
@@ -108,7 +111,7 @@ namespace game
             rb.AddTorque(Vector3.right * deathTorque, ForceMode.Impulse);
 
             GetComponent<Collider>().enabled = false;
-            
+
         }
     }
 }
