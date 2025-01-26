@@ -69,14 +69,25 @@ namespace game
        }
 
        public void GameOver(){
-           StartCoroutine(GameOverRoutine());
+           StartCoroutine(GameOverRoutine(false));
+       }
+       public void GameWin(){
+           StartCoroutine(GameOverRoutine(true));
        }
 
-        private IEnumerator GameOverRoutine(){
+        private IEnumerator GameOverRoutine(bool winBool){
+
             float fadeTime = 2f;
             float elapsedTime = 0f;
-            Color startColor = new Color32(66, 14, 14, 0); // initial color with alpha = 0
-            Color endColor = new Color32(66, 14, 14, 120); // final color with alpha = 120
+            Color startColor = new Color32(66, 14, 14, 0);
+            Color endColor = new Color32(66, 14, 14, 120);
+            if(winBool){
+                startColor = new Color32(0, 0, 0, 0);
+                endColor = new Color32(0, 0, 0, 120);
+            }else{
+                 startColor = new Color32(66, 14, 14, 0);
+                 endColor = new Color32(66, 14, 14, 120);
+            }
 
             while (elapsedTime < fadeTime) {
                 float alpha = Mathf.Lerp(0f, 120f, elapsedTime / fadeTime);

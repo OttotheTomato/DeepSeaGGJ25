@@ -91,6 +91,11 @@ namespace game
             HUDManager.Instance.GameOver();
         }
 
+        private void PlayerWin(){
+            // AudioManager.Instance.Play("PlayerWin");
+            HUDManager.Instance.GameWin();
+        }
+
         public void RagdollPlayer(){
             float deathForce = 10f;
             float deathTorque = 10f;
