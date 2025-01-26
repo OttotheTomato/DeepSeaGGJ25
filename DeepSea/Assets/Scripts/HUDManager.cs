@@ -22,6 +22,8 @@ namespace game
 
         [SerializeField]
         private Image FogImage;
+        [SerializeField]
+        private Image HelmetPanel;
 
         void Awake() {
             if (_instance != null && _instance != this)
@@ -64,6 +66,27 @@ namespace game
         float breatheAmount = Mathf.Sin(Time.time * 1f) * 20f;
         fogLevel += breatheAmount;
         FogImage.color = new Color(1, 1, 1, fogLevel / 100f);
-}
+       }
+
+       public void GameOver(){
+           StartCoroutine(GameOverRoutine());
+       }
+
+        private IEnumerator GameOverRoutine(){
+            float fadeTime = 2f;
+            float elapsedTime = 0f;
+            Color startColor = new Color32(66, 14, 14, 0); // initial color with alpha = 0
+            Color endColor = new Color32(66, 14, 14, 120); // final color with alpha = 120
+
+            while (elapsedTime < fadeTime) {
+                float alpha = Mathf.Lerp(0f, 120f, elapsedTime / fadeTime);
+                HelmetPanel.color = new Color32(66, 14, 14, (byte)alpha);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            HelmetPanel.color = endColor;
+            UnityEngine.SceneManagement.SceneManager.LoadScene("TitleScene");
+        }
     }
 }

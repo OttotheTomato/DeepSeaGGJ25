@@ -37,6 +37,11 @@ namespace game
             {
                 Gasped = false;
                 CurrentOxygenLevel -= OxygenDrainRate * Time.deltaTime;
+                if (CurrentOxygenLevel < 0)
+                {
+                    CurrentOxygenLevel = 0;
+                    PlayerDie();
+                }
             }
             UpdateOxygenText();
         }
@@ -77,6 +82,11 @@ namespace game
         private void OnTriggerExit(Collider other)
         {
             isInBubble = false;
+        }
+
+        private void PlayerDie(){
+            // AudioManager.Instance.Play("PlayerDie");
+            HUDManager.Instance.GameOver();
         }
     }
 }
