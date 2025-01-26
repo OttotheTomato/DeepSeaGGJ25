@@ -27,7 +27,7 @@ public class TitleManager : MonoBehaviour
 
     public void StartGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("LightingTest");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainLevel");
     }
 
     public void QuitGame()
