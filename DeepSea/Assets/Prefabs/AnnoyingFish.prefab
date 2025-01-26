@@ -186,7 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Speed: 1
   _ClearingRange: 0.5
-  _TurningSpeed: 0.04
+  _TurningSpeed: 2
   _Offset: {x: 0, y: 0.5, z: 0}
 --- !u!54 &6460776406335342205
 Rigidbody:

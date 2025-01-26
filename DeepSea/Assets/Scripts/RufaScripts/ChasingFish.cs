@@ -14,6 +14,7 @@ public class AnnoyingFish : MonoBehaviour
     public Vector3 _Offset = new Vector3(0f, 1f, 0f);
 
     private bool _SeesPlayer = false, _Patrolling = true;
+    public bool _Flashed = false;
 
     private PatrolPoint[] _PatrolPoints;
 
@@ -34,7 +35,15 @@ public class AnnoyingFish : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CanSeeTarget(_PlayerTransform) && _SeesPlayer)
+        if (_Flashed)
+        {
+            _TargetPosition = _PlayerTransform.position;
+            Vector3 _Direction = (transform.position - _TargetPosition).normalized;
+
+            transform.forward = Vector3.Lerp(transform.forward, _Direction, _TurningSpeed * Time.deltaTime);
+            _RB.AddForce(_Direction * _Speed * 2f);
+        }
+        else if (CanSeeTarget(_PlayerTransform) && _SeesPlayer)
         {
             _TargetPosition = _PlayerTransform.position;
             Vector3 _Direction = (_TargetPosition + _Offset - transform.position).normalized;
@@ -57,7 +66,7 @@ public class AnnoyingFish : MonoBehaviour
             {
                 Vector3 _Direction = (_TargetPosition - transform.position).normalized;
 
-                transform.forward = Vector3.Lerp(transform.forward, _Direction, _TurningSpeed);
+                transform.forward = Vector3.Lerp(transform.forward, _Direction, _TurningSpeed * Time.deltaTime);
 
                 _RB.AddForce(_Direction * _Speed);
             }
@@ -87,7 +96,7 @@ public class AnnoyingFish : MonoBehaviour
     {
         if (_Entity.transform == _PlayerTransform)
         {
-            Debug.Log("Found player");
+            //Debug.Log("Found player");
 
             _SeesPlayer = true;
         }
@@ -97,7 +106,7 @@ public class AnnoyingFish : MonoBehaviour
     {
         if (_Entity.transform == _PlayerTransform)
         {
-            Debug.Log("Lost player");
+            //Debug.Log("Lost player");
 
             _SeesPlayer = false;
         }
@@ -106,7 +115,6 @@ public class AnnoyingFish : MonoBehaviour
     private bool CanSeeTarget(Transform _Target)
     {
         RaycastHit[] _Objects = Physics.RaycastAll(transform.position, _Target.position + _Offset - transform.position, Vector3.Distance(transform.position, _Target.position));
-        Debug.Log(_Objects.Length);
         
         for (int i = 0; i < _Objects.Length; i++)
         {
