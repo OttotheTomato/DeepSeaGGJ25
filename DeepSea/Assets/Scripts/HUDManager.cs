@@ -83,7 +83,7 @@ namespace game
             Color endColor = new Color32(66, 14, 14, 120);
             if(winBool){
                 startColor = new Color32(0, 0, 0, 0);
-                endColor = new Color32(0, 0, 0, 120);
+                endColor = new Color32(0, 0, 0, 255);
             }else{
                  startColor = new Color32(66, 14, 14, 0);
                  endColor = new Color32(66, 14, 14, 120);
