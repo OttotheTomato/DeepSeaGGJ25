@@ -34,13 +34,17 @@ public class TitleManager : MonoBehaviour
     {
         Application.Quit();
     }
+
     public void ShowCredits()
     {
         creditsPanel.SetActive(true);
         if(!isLerping){
             isLerping = true;
-            Vector2 startPosition = creditsPanel.GetComponent<RectTransform>().anchoredPosition;
-            Vector2 targetPosition = -startPosition;
+            Vector2 startPosition = new Vector2(creditsPanel.GetComponent<RectTransform>().anchoredPosition.x, -Screen.height);
+            Vector2 targetPosition = new Vector2(creditsPanel.GetComponent<RectTransform>().anchoredPosition.x, Screen.height + 100);
+        
+            // Vector2 startPosition = creditsPanel.GetComponent<RectTransform>().anchoredPosition;
+            // Vector2 targetPosition = -startPosition;
             StartCoroutine(LerpPosition(creditsPanel.GetComponent<RectTransform>(), targetPosition, 5f, () => {
                 creditsPanel.GetComponent<RectTransform>().anchoredPosition = startPosition;
                 isLerping = false;

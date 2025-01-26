@@ -170,7 +170,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -9, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &655485599980352822
@@ -364,10 +364,10 @@ RectTransform:
   - {fileID: 1868173850002371627}
   m_Father: {fileID: 5264237808894388490}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -177.54004, y: 0.000030517578}
-  m_SizeDelta: {x: 354.08002, y: 679.99994}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -320.96, y: 0.000030517578}
+  m_SizeDelta: {x: 641.9146, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6042456311063139563
 CanvasRenderer:
@@ -1520,34 +1520,39 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Director and Production
 
-    Otto
+    Otto Perry (OttotheTomato)
 
+    
 
     Programming
 
     Otto
+    Perry (OttotheTomato)
 
-    Forest
+    Forest Moses (CyberDryad)
 
-    Alexander
+    Alexander "Rufa"
+    Brim
 
+    
 
     Design
 
-    Otto
+    Otto Perry (OttotheTomato)
 
-    Forest
+    Forest Moses
+    (CyberDryad)
 
-    Alexander
+    Alexander "Rufa" Brim
 
+    
 
     Art
 
-    Everglade
+    Emily Hogue
 
-    Salo
-
-'
+    Karr
+    The Hooded Crow'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9be8e28f00c3de44f94d7e63034f09b1, type: 2}
   m_sharedMaterial: {fileID: -1978807765228441476, guid: 9be8e28f00c3de44f94d7e63034f09b1, type: 2}
