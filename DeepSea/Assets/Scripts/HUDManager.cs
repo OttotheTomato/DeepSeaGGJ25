@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 
 namespace game
 {
@@ -18,6 +19,9 @@ namespace game
         private Slider OxygenBarNormal;
         [SerializeField]
         private Slider OxygenBarInsane;
+
+        [SerializeField]
+        private Image FogImage;
 
         void Awake() {
             if (_instance != null && _instance != this)
@@ -51,6 +55,13 @@ namespace game
             }
             OxygenBarNormal.value = oxygen / 100f;  
             OxygenBarInsane.value = oxygen / 100f;
+
+            UpdateFog(oxygen);
+        }
+
+        public void UpdateFog(float oxygen) {
+            float fogLevel = 100 - (((oxygen / 100f) * 100) * 0.5f);
+            FogImage.color = new Color(1, 1, 1, fogLevel / 100f);
         }
     }
 }

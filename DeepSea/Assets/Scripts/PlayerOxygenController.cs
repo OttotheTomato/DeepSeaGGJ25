@@ -34,6 +34,10 @@ namespace game {
             UpdateOxygenText();
         }
 
+        public void RemoveOxygen(float oxygenToRemove) {
+            CurrentOxygenLevel -= oxygenToRemove;
+        }
+
         private void UpdateOxygenText() {
            HUDManager.Instance.UpdateOxygen(CurrentOxygenLevel);
         }
