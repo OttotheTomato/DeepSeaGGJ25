@@ -1810,10 +1810,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnderwaterPostProcessingVolume
       objectReference: {fileID: 0}
-    - target: {fileID: 8496660541579061512, guid: ab9e0b35a8f4642418275f378bfddc21, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
