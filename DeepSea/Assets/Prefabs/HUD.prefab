@@ -529,7 +529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0.26415092, g: 0.05357778, b: 0.05357778, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -617,8 +617,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 343.37527, y: -0.00010681}
-  m_SizeDelta: {x: 80.5459, y: 54.2338}
+  m_AnchoredPosition: {x: 350.49, y: -0.00010681}
+  m_SizeDelta: {x: 94.77527, y: 54.2338}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &34989252215090501
 CanvasRenderer:
@@ -965,10 +965,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1490137050096117780}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.59503, y: 0}
-  m_SizeDelta: {x: 1435.2, y: 633}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.4000244, y: 0}
+  m_SizeDelta: {x: -0.8, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1668166623878031105
 CanvasRenderer:
@@ -1278,6 +1278,7 @@ MonoBehaviour:
   OxygenBarNormal: {fileID: 5651538221230510855}
   OxygenBarInsane: {fileID: 297065372814580880}
   FogImage: {fileID: 2787515963774232130}
+  HelmetPanel: {fileID: 6766101569051227687}
 --- !u!1 &7608872358706456218
 GameObject:
   m_ObjectHideFlags: 0
