@@ -54,7 +54,7 @@ public class AnnoyingFish : MonoBehaviour
 
             transform.forward = Vector3.Lerp(transform.forward, _Direction, _TurningSpeed * Time.deltaTime);
             _RB.AddForce(_Direction * _Speed * 2f);
-            if (!FlashScreech)
+            if (!FlashScreech & !_AudioSource.isPlaying)
             {
                 FlashScreech = true;
                 AudioManager.Instance.PlayerSounds(_AudioSource, "fishhurt");
@@ -108,6 +108,7 @@ public class AnnoyingFish : MonoBehaviour
         }
         else
         {
+            FlashScreech = false;
             Vector3 _Direction = (_TargetPosition - transform.position).normalized;
 
             transform.forward = Vector3.Lerp(transform.forward, _Direction, _TurningSpeed * Time.deltaTime);

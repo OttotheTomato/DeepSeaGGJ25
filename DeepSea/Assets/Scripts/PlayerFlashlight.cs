@@ -7,7 +7,7 @@ public class PlayerFlashlight : MonoBehaviour
     [SerializeField]
     private Camera m_Camera;
 
-    public float _Range = 10f;
+    public float _Range = 3f;
 
     private AnnoyingFish currentFish;
     void Update()
